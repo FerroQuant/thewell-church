@@ -1,0 +1,93 @@
+// =============================================================================
+// VARIABLES
+// Brand colours, typography, spacing, layout tokens
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Brand Colours
+// -----------------------------------------------------------------------------
+$primary:        #1a5c5e;   // Deep teal
+$primary-dark:   #134446;   // Darker teal (footers, headings)
+$primary-light:  #2a7c7e;   // Lighter teal (hover states)
+$accent:         #d4a843;   // Warm gold
+$accent-dark:    #b88c2e;   // Darker gold (hover)
+$accent-light:   #e8c06e;   // Lighter gold
+
+$bg:             #fafaf7;   // Warm off-white background
+$bg-alt:         #f0f0ec;   // Slightly darker off-white for alternate sections
+$white:          #ffffff;
+$black:          #111111;
+
+$text-primary:   #1a1a1a;   // Near-black for body text
+$text-secondary: #4a4a4a;   // Medium grey for secondary text
+$text-muted:     #767676;   // Muted grey (accessible contrast on white)
+$text-light:     rgba(255, 255, 255, 0.85);  // White text on dark bg
+
+$border-color:   #e0e0d8;   // Subtle warm border
+
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+$font-heading:  'Inter', system-ui, -apple-system, sans-serif;
+$font-body:     'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+$font-mono:     'Courier New', monospace;
+
+$font-size-base: 1rem;       // 16px
+$line-height:    1.65;
+
+// Type scale
+$text-xs:   0.75rem;    // 12px
+$text-sm:   0.875rem;   // 14px
+$text-base: 1rem;       // 16px
+$text-lg:   1.125rem;   // 18px
+$text-xl:   1.25rem;    // 20px
+$text-2xl:  1.5rem;     // 24px
+$text-3xl:  1.875rem;   // 30px
+$text-4xl:  2.25rem;    // 36px
+$text-5xl:  3rem;       // 48px
+$text-6xl:  3.75rem;    // 60px
+
+$font-light:    300;
+$font-normal:   400;
+$font-medium:   500;
+$font-semibold: 600;
+$font-bold:     700;
+
+// -----------------------------------------------------------------------------
+// Spacing Scale (8px base)
+// -----------------------------------------------------------------------------
+$spacing-xs:  4px;
+$spacing-sm:  8px;
+$spacing-md:  16px;
+$spacing-lg:  24px;
+$spacing-xl:  32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+$spacing-4xl: 96px;
+
+// -----------------------------------------------------------------------------
+// Layout
+// -----------------------------------------------------------------------------
+$max-width:    1200px;
+$nav-height:   72px;
+$border-radius:    8px;
+$border-radius-lg: 16px;
+
+// Breakpoints
+$bp-sm:  576px;
+$bp-md:  768px;
+$bp-lg:  1024px;
+$bp-xl:  1280px;
+
+// -----------------------------------------------------------------------------
+// Shadows
+// -----------------------------------------------------------------------------
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.10), 0 4px 10px rgba(0, 0, 0, 0.06);
+
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+$transition-fast:   150ms ease-in-out;
+$transition-normal: 250ms ease-in-out;

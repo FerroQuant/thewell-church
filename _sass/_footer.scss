@@ -1,0 +1,231 @@
+// =============================================================================
+// FOOTER
+// Dark teal background, 4-column grid layout
+// =============================================================================
+@import 'variables';
+
+// -----------------------------------------------------------------------------
+// Site footer wrapper
+// -----------------------------------------------------------------------------
+.site-footer {
+  background-color: $primary-dark;
+  color: $text-light;
+  padding-top: $spacing-3xl;
+  padding-bottom: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Footer grid
+// -----------------------------------------------------------------------------
+.footer-grid {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+
+  // Mobile: single column
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+
+  // Tablet: 2 columns
+  @media (min-width: #{$bp-md}) {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+    gap: $spacing-xl;
+  }
+
+  @media (min-width: #{$bp-lg}) {
+    padding-left: $spacing-xl;
+    padding-right: $spacing-xl;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Footer columns
+// -----------------------------------------------------------------------------
+.footer-col {
+  // Base column styles
+
+  &__heading {
+    font-family: $font-heading;
+    font-size: $text-sm;
+    font-weight: $font-bold;
+    color: $white;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $spacing-md;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// About column (first, wider)
+// -----------------------------------------------------------------------------
+.footer-about {
+  // Logo area
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    text-decoration: none;
+    margin-bottom: $spacing-md;
+
+    img {
+      width: 40px;
+      height: 40px;
+      opacity: 0.9;
+    }
+
+    &__text {
+      font-family: $font-heading;
+      font-weight: $font-bold;
+      font-size: $text-lg;
+      color: $white;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $accent;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  &__tagline {
+    font-size: $text-sm;
+    color: $text-light;
+    margin-bottom: $spacing-lg;
+    max-width: 28ch;
+  }
+
+  &__contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__contact-item {
+    font-size: $text-sm;
+    color: $text-light;
+    line-height: 1.5;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Link lists (Quick Links, Connect)
+// -----------------------------------------------------------------------------
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  &__item {
+    // no extra styles needed
+  }
+
+  &__link {
+    display: inline-block;
+    font-size: $text-sm;
+    color: $text-light;
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $accent;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Social links
+// -----------------------------------------------------------------------------
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: $text-sm;
+    color: $text-light;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $accent;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Footer bottom bar
+// -----------------------------------------------------------------------------
+.footer-bottom {
+  margin-top: $spacing-2xl;
+  border-top: 1px solid rgba($white, 0.12);
+  padding: $spacing-lg $spacing-md;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  @media (min-width: #{$bp-md}) {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+
+  @media (min-width: #{$bp-lg}) {
+    padding-left: $spacing-xl;
+    padding-right: $spacing-xl;
+  }
+
+  p {
+    font-size: $text-sm;
+    color: rgba($white, 0.55);
+    margin: 0;
+    max-width: none;
+  }
+
+  a {
+    color: rgba($white, 0.70);
+    text-decoration: underline;
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $accent;
+    }
+  }
+}

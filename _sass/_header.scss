@@ -1,0 +1,279 @@
+// =============================================================================
+// HEADER
+// Fixed navigation bar with mobile menu support
+// =============================================================================
+@import 'variables';
+
+// -----------------------------------------------------------------------------
+// Site header wrapper
+// -----------------------------------------------------------------------------
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: $nav-height;
+  background-color: $white;
+  box-shadow: $shadow-sm;
+  border-bottom: 1px solid $border-color;
+}
+
+// -----------------------------------------------------------------------------
+// Inner nav container
+// -----------------------------------------------------------------------------
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+
+  @media (min-width: #{$bp-sm}) {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+
+  @media (min-width: #{$bp-lg}) {
+    padding-left: $spacing-xl;
+    padding-right: $spacing-xl;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Logo
+// -----------------------------------------------------------------------------
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  img {
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+
+  &__text {
+    font-family: $font-heading;
+    font-weight: $font-bold;
+    font-size: $text-lg;
+    color: $primary-dark;
+    line-height: 1.1;
+
+    // Hide full text on very small screens, show just the logo image
+    @media (max-width: 359px) {
+      display: none;
+    }
+  }
+
+  &:hover .site-logo__text {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Mobile hamburger toggle
+// -----------------------------------------------------------------------------
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: $spacing-sm;
+  background: none;
+  border: none;
+  border-radius: $border-radius;
+  color: $primary-dark;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: $bg-alt;
+    color: $primary;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 2px;
+  }
+
+  svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  // Hide on desktop
+  @media (min-width: #{$bp-lg}) {
+    display: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation menu
+// -----------------------------------------------------------------------------
+.nav-menu {
+  // Mobile: hidden by default, absolute dropdown
+  display: none;
+  position: absolute;
+  top: $nav-height;
+  left: 0;
+  right: 0;
+  background-color: $white;
+  box-shadow: $shadow-md;
+  border-top: 1px solid $border-color;
+  padding: $spacing-md;
+  z-index: 49;
+
+  &.is-open {
+    display: block;
+  }
+
+  // Desktop: flex inline in nav bar
+  @media (min-width: #{$bp-lg}) {
+    display: flex !important;
+    align-items: center;
+    gap: $spacing-md;
+    position: static;
+    background: none;
+    box-shadow: none;
+    border-top: none;
+    padding: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Nav links list
+// -----------------------------------------------------------------------------
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  // Mobile: stacked
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  // Desktop: horizontal
+  @media (min-width: #{$bp-lg}) {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+.nav-links__item {
+  // no extra styles needed
+}
+
+.nav-links__link {
+  display: block;
+  padding: $spacing-sm $spacing-md;
+  font-family: $font-body;
+  font-size: $text-base;
+  font-weight: $font-medium;
+  color: $text-primary;
+  text-decoration: none;
+  border-radius: $border-radius;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    background-color: $bg-alt;
+    color: $primary;
+  }
+
+  &[aria-current="page"] {
+    background-color: rgba($primary, 0.08);
+    color: $primary;
+    font-weight: $font-semibold;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 2px;
+  }
+
+  @media (min-width: #{$bp-lg}) {
+    font-size: $text-sm;
+    white-space: nowrap;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Nav actions (search + CTA)
+// -----------------------------------------------------------------------------
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 1px solid $border-color;
+
+  @media (min-width: #{$bp-lg}) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+}
+
+// Search form
+.nav-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  label {
+    // sr-only via HTML class
+  }
+
+  input[type="search"] {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    font-family: $font-body;
+    font-size: $text-sm;
+    color: $text-primary;
+    background-color: $bg-alt;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    min-height: 44px;
+    transition: border-color $transition-fast, box-shadow $transition-fast, width $transition-normal;
+
+    &::placeholder {
+      color: $text-muted;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.15);
+      background-color: $white;
+    }
+
+    // Desktop: width expands on focus
+    @media (min-width: #{$bp-lg}) {
+      width: 140px;
+
+      &:focus {
+        width: 220px;
+      }
+    }
+  }
+}
