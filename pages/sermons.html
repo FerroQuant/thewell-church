@@ -1,0 +1,90 @@
+---
+layout: default
+title: "Sermons"
+subtitle: "Watch and listen to messages from The Well"
+permalink: /sermons/
+description: "Watch sermons and messages from The Well Church Reading. Browse our video archive."
+---
+
+<section class="page-header">
+  <div class="container">
+    <h1>Sermons</h1>
+    <p class="page-subtitle">Watch and listen to messages from The Well</p>
+
+    <form class="sermon-search" action="{{ '/search/' | relative_url }}" method="get" role="search">
+      <label for="sermon-search-input" class="sr-only">Search sermons</label>
+      <input
+        type="search"
+        id="sermon-search-input"
+        name="q"
+        placeholder="Search sermons..."
+        autocomplete="off">
+      <button type="submit" class="btn btn--accent">Search</button>
+    </form>
+  </div>
+</section>
+
+<section class="page-content section">
+  <div class="container">
+
+    {% if site.data.facebook_videos and site.data.facebook_videos.size > 0 %}
+
+    <div class="card-grid">
+      {% for video in site.data.facebook_videos %}
+      <article class="card">
+        {% if video.picture %}
+        <div class="card__image-wrap">
+          <img
+            src="{{ video.picture }}"
+            alt="{{ video.title | default: 'Sermon video' }}"
+            class="card__image"
+            loading="lazy">
+        </div>
+        {% else %}
+        <div class="card__image-wrap card__image-wrap--placeholder" aria-hidden="true"></div>
+        {% endif %}
+
+        <div class="card__body">
+          <p class="card__date">
+            {{ video.created_time | date: "%d %B %Y" }}
+          </p>
+          <h2 class="card__title">
+            {{ video.title | default: "Sermon" }}
+          </h2>
+          {% if video.description %}
+          <p class="card__excerpt">
+            {{ video.description | truncatewords: 20 }}
+          </p>
+          {% endif %}
+          <a
+            href="https://www.facebook.com/watch/?v={{ video.id }}"
+            class="card__link card-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch {{ video.title | default: 'this sermon' }} on Facebook">
+            View on Facebook
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% else %}
+
+    <div class="placeholder-text">
+      <p>Sermon videos will appear here once they are synced from our Facebook page.</p>
+      <p>
+        <a
+          href="{{ site.church.facebook }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card-link">
+          Watch our latest sermons on Facebook
+        </a>
+      </p>
+    </div>
+
+    {% endif %}
+
+  </div>
+</section>
