@@ -1,0 +1,194 @@
+// =============================================================================
+// VIDEO
+// Sermon video player, transcript panel, sermon search, back link
+// =============================================================================
+@import 'variables';
+
+// -----------------------------------------------------------------------------
+// Sermon search form (in page-header)
+// -----------------------------------------------------------------------------
+.sermon-search {
+  display: flex;
+  gap: $spacing-sm;
+  max-width: 480px;
+  margin: $spacing-lg auto 0;
+
+  input[type="search"] {
+    flex: 1;
+    padding: $spacing-sm $spacing-md;
+    border: 2px solid rgba($white, 0.3);
+    border-radius: $border-radius;
+    background-color: rgba($white, 0.15);
+    color: $white;
+    font-size: $text-base;
+    font-family: $font-body;
+
+    &::placeholder {
+      color: rgba($white, 0.6);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+      background-color: rgba($white, 0.2);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Back link
+// -----------------------------------------------------------------------------
+.back-link {
+  display: inline-block;
+  color: rgba($white, 0.8);
+  text-decoration: none;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  margin-bottom: $spacing-md;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $white;
+    text-decoration: underline;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Two-column video layout
+// -----------------------------------------------------------------------------
+.video-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+  margin-bottom: $spacing-2xl;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Video player
+// -----------------------------------------------------------------------------
+.video-player {
+  width: 100%;
+}
+
+.video-element {
+  width: 100%;
+  border-radius: $border-radius;
+  display: block;
+  background-color: $black;
+}
+
+// 16:9 aspect ratio wrapper for Facebook embeds
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: $border-radius;
+  background-color: $black;
+
+  iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Transcript panel
+// -----------------------------------------------------------------------------
+.transcript-panel {
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+}
+
+.transcript-heading {
+  font-size: $text-lg;
+  font-weight: $font-semibold;
+  color: $primary-dark;
+  padding: $spacing-lg $spacing-lg $spacing-sm;
+  margin: 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.transcript-segments {
+  max-height: 500px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.transcript-segment {
+  display: flex;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: $spacing-sm $spacing-lg;
+  border: none;
+  border-bottom: 1px solid $border-color;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: $bg-alt;
+  }
+
+  &.is-active {
+    background-color: rgba($primary, 0.08);
+
+    .transcript-time {
+      color: $primary-dark;
+      font-weight: $font-bold;
+    }
+  }
+}
+
+.transcript-time {
+  flex-shrink: 0;
+  font-family: $font-mono;
+  font-size: $text-xs;
+  font-weight: $font-semibold;
+  color: $primary;
+  padding-top: 2px;
+  min-width: 52px;
+}
+
+.transcript-text {
+  font-size: $text-sm;
+  color: $text-secondary;
+  line-height: 1.5;
+}
+
+.transcript-loading {
+  padding: $spacing-lg;
+  color: $text-muted;
+  font-style: italic;
+  font-size: $text-sm;
+}
+
+// -----------------------------------------------------------------------------
+// Card link colour (Facebook / external links in card footers)
+// -----------------------------------------------------------------------------
+.card-link {
+  color: $primary;
+  text-decoration: none;
+  font-weight: $font-semibold;
+  font-size: $text-sm;
+
+  &:hover {
+    color: $primary-light;
+    text-decoration: underline;
+  }
+}

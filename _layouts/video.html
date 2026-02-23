@@ -1,0 +1,100 @@
+---
+layout: default
+---
+
+<section class="page-header">
+  <div class="container">
+    <a href="{{ '/sermons/' | relative_url }}" class="back-link">&larr; Back to Sermons</a>
+    <h1>{{ page.title }}</h1>
+    {% if page.date %}
+    <p class="page-subtitle">{{ page.date | date: "%d %B %Y" }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="page-content section">
+  <div class="container">
+
+    <div class="video-layout">
+
+      <!-- Video player -->
+      <div class="video-player">
+        {% if page.video_url %}
+        <video
+          class="video-element"
+          controls
+          preload="metadata"
+          poster="{{ page.thumbnail | default: '' }}"
+          aria-label="{{ page.title }}">
+          <source src="{{ page.video_url }}" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
+        {% elsif page.facebook_video_id %}
+        <div class="video-embed">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D{{ page.facebook_video_id }}&show_text=false&width=560"
+            width="560"
+            height="315"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            title="{{ page.title }}">
+          </iframe>
+        </div>
+        {% else %}
+        <div class="video-embed">
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href={{ site.church.facebook | url_encode }}&tabs=videos"
+            width="560"
+            height="315"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            title="The Well Church videos">
+          </iframe>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Transcript panel -->
+      {% if page.transcript %}
+      <aside class="transcript-panel" aria-label="Sermon transcript">
+        <h2 class="transcript-heading">Transcript</h2>
+        <div class="transcript-segments">
+          {% for segment in page.transcript.segments %}
+          <button
+            class="transcript-segment"
+            data-time="{{ segment.start }}"
+            type="button"
+            aria-label="Jump to {{ segment.start }}">
+            <span class="transcript-time">{{ segment.start }}</span>
+            <span class="transcript-text">{{ segment.text }}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </aside>
+      {% elsif page.transcript_id %}
+      <aside class="transcript-panel" aria-label="Sermon transcript">
+        <h2 class="transcript-heading">Transcript</h2>
+        <div class="transcript-segments" id="transcript-segments" data-transcript-id="{{ page.transcript_id }}">
+          <p class="transcript-loading">Loading transcript&hellip;</p>
+        </div>
+      </aside>
+      {% endif %}
+
+    </div><!-- /.video-layout -->
+
+    {% if content and content != '' %}
+    <div class="content-body">
+      {{ content }}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<script src="{{ '/assets/js/video-player.js' | relative_url }}" defer></script>
