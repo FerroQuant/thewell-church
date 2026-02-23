@@ -88,11 +88,11 @@
 
 // =============================================================================
 // CTA BANNER
-// Gold accent strip — prayer call to action
+// Blue accent strip — prayer call to action
 // =============================================================================
 
 .cta-banner {
-  background-color: $accent;
+  background: linear-gradient(135deg, $accent 0%, $accent-light 100%);
   padding-top: $spacing-2xl;
   padding-bottom: $spacing-2xl;
 }
@@ -115,12 +115,12 @@
 
 .cta-banner__heading {
   font-size: $text-2xl;
-  color: $primary-dark;
+  color: $white;
   margin-bottom: $spacing-sm;
 }
 
 .cta-banner__body {
-  color: color.adjust($primary-dark, $lightness: 10%);
+  color: rgba($white, 0.9);
   max-width: 56ch;
   margin-bottom: 0;
 }

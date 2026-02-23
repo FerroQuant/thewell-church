@@ -161,7 +161,7 @@ hr {
 .skip-link {
   @extend .sr-only;
   background: $accent;
-  color: $black;
+  color: $white;
   font-weight: $font-bold;
   padding: $spacing-sm $spacing-md;
   border-radius: $border-radius;
@@ -232,17 +232,17 @@ hr {
   }
 }
 
-// Accent — warm gold
+// Accent — bright blue
 .btn--accent {
   @extend .btn;
   background-color: $accent;
-  color: $black;
+  color: $white;
   border-color: $accent;
 
   &:hover {
     background-color: $accent-dark;
     border-color: $accent-dark;
-    color: $black;
+    color: $white;
     text-decoration: none;
   }
 
