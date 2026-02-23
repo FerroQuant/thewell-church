@@ -1,4 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <rect width="48" height="48" rx="8" fill="#1a5c5e"/>
-  <text x="24" y="32" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">TW</text>
+  <!-- Outer ring - darkest blue -->
+  <circle cx="24" cy="24" r="24" fill="#0a5a9e"/>
+  <!-- Second ring -->
+  <circle cx="24" cy="24" r="19" fill="#1a7ab8"/>
+  <!-- Third ring - bright blue -->
+  <circle cx="24" cy="24" r="14.5" fill="#1f92c8"/>
+  <!-- Inner ring - lightest blue -->
+  <circle cx="24" cy="24" r="11" fill="#4eadd4"/>
+  <!-- White circle with cross -->
+  <circle cx="24" cy="24" r="8" fill="#ffffff"/>
+  <!-- Cross -->
+  <rect x="22.5" y="17" width="3" height="14" rx="1" fill="#0a5a9e"/>
+  <rect x="19" y="22" width="10" height="3" rx="1" fill="#0a5a9e"/>
 </svg>

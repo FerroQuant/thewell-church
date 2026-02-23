@@ -4,26 +4,26 @@
 // =============================================================================
 
 // -----------------------------------------------------------------------------
-// Brand Colours
+// Brand Colours — 4 shades of blue from The Well Church logo
 // -----------------------------------------------------------------------------
-$primary:        #1a5c5e;   // Deep teal
-$primary-dark:   #134446;   // Darker teal (footers, headings)
-$primary-light:  #2a7c7e;   // Lighter teal (hover states)
-$accent:         #d4a843;   // Warm gold
-$accent-dark:    #b88c2e;   // Darker gold (hover)
-$accent-light:   #e8c06e;   // Lighter gold
+$primary:        #0a5a9e;   // Deep navy blue (outermost ring)
+$primary-dark:   #073f6e;   // Darker navy (footers, headings)
+$primary-light:  #1a7ab8;   // Medium blue (second ring, hover states)
+$accent:         #1f92c8;   // Bright blue (third ring, CTAs)
+$accent-dark:    #1578a6;   // Darker bright blue (hover)
+$accent-light:   #4eadd4;   // Light blue (fourth ring, highlights)
 
-$bg:             #fafaf7;   // Warm off-white background
-$bg-alt:         #f0f0ec;   // Slightly darker off-white for alternate sections
+$bg:             #f5f8fb;   // Cool off-white with blue tint
+$bg-alt:         #eaf1f7;   // Slightly darker blue-white for sections
 $white:          #ffffff;
 $black:          #111111;
 
-$text-primary:   #1a1a1a;   // Near-black for body text
-$text-secondary: #4a4a4a;   // Medium grey for secondary text
-$text-muted:     #767676;   // Muted grey (accessible contrast on white)
-$text-light:     rgba(255, 255, 255, 0.85);  // White text on dark bg
+$text-primary:   #1a1a2e;   // Near-black for body text
+$text-secondary: #3a4a5a;   // Blue-grey for secondary text
+$text-muted:     #6a7a8a;   // Muted blue-grey (accessible contrast on white)
+$text-light:     rgba(255, 255, 255, 0.9);  // White text on dark bg
 
-$border-color:   #e0e0d8;   // Subtle warm border
+$border-color:   #d0dce8;   // Subtle blue border
 
 // -----------------------------------------------------------------------------
 // Typography
