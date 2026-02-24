@@ -16,7 +16,7 @@
         rel="stylesheet">
 
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=3' | relative_url }}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg?v=3' | relative_url }}">
@@ -49,10 +49,10 @@
   <svg width="0" height="0" style="position:absolute;" aria-hidden="true">
     <defs>
       <filter id="water-filter" x="-3%" y="-3%" width="106%" height="106%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="1">
-          <animate attributeName="seed" from="1" to="80" dur="12s" repeatCount="indefinite"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" seed="1">
+          <animate attributeName="seed" from="1" to="80" dur="10s" repeatCount="indefinite"/>
         </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+        <feDisplacementMap in="SourceGraphic" scale="4" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
     </defs>
   </svg>
