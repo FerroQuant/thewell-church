@@ -155,5 +155,14 @@
   font-size: $text-base;
   color: $text-secondary;
   line-height: $line-height;
-  margin-bottom: 0;
+  margin-bottom: $spacing-md;
+}
+
+.leader-card__links {
+  margin-top: $spacing-sm;
+}
+
+.btn--small {
+  font-size: $text-sm;
+  padding: $spacing-xs $spacing-md;
 }
