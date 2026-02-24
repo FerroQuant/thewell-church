@@ -4,6 +4,10 @@
   var buttons = document.querySelectorAll('.js-live-btn');
   if (!buttons.length) return;
 
+  // Only poll when the Cloudflare Worker is deployed (production domain)
+  var host = window.location.hostname;
+  if (host !== 'thewell-church.com' && host !== 'www.thewell-church.com') return;
+
   function check() {
     fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) {
       var show = d && d.is_live;
