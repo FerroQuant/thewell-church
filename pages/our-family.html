@@ -26,11 +26,8 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
     <div class="leadership-grid">
 
       <div class="leader-card">
-        <div class="leader-card__photo" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+        <div class="leader-card__photo">
+          <img src="{{ '/assets/images/people/rod-elsa.jpg' | relative_url }}" alt="Rod and Elsa Carkett" loading="lazy">
         </div>
         <h2 class="leader-card__name">Rod &amp; Elsa Carkett</h2>
         <p class="leader-card__role">Lead Pastors</p>
@@ -44,8 +41,7 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
       <div class="leader-card">
         <div class="leader-card__photo" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
         </div>
         <h2 class="leader-card__name">Tibs &amp; Martha</h2>
@@ -72,12 +68,9 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
 
     <div class="leadership-grid">
 
-      <div class="leader-card">
-        <div class="leader-card__photo" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+      <div class="leader-card leader-card--featured">
+        <div class="leader-card__photo">
+          <img src="{{ '/assets/images/people/jenny-carroll.jpg' | relative_url }}" alt="Jenny Carroll" loading="lazy">
         </div>
         <h2 class="leader-card__name">Jenny Carroll</h2>
         <p class="leader-card__role">Evangelist</p>
@@ -94,30 +87,27 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
         </div>
       </div>
 
-      <div class="leader-card">
-        <div class="leader-card__photo" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+      <div class="leader-card leader-card--instagram">
+        <div class="leader-card__photo">
+          <img src="{{ '/assets/images/people/ethan-dolding.jpg' | relative_url }}" alt="Ethan Dolding" loading="lazy">
         </div>
         <h2 class="leader-card__name">Ethan Dolding</h2>
         <p class="leader-card__role">Missions</p>
+        <span class="instagram-handle">
+          <a href="https://www.instagram.com/ethandolding/" target="_blank" rel="noopener noreferrer">@ethandolding</a>
+        </span>
         <p class="leader-card__bio">
           We are pleased to support Ethan in his missions work. Follow his journey
           and see what God is doing through his ministry.
         </p>
         <div class="leader-card__links">
-          <a href="https://www.instagram.com/ethandolding/" target="_blank" rel="noopener noreferrer" class="btn--outline-primary btn--small">Follow on Instagram</a>
+          <a href="https://www.instagram.com/ethandolding/" target="_blank" rel="noopener noreferrer" class="btn--instagram">Follow on Instagram</a>
         </div>
       </div>
 
       <div class="leader-card">
-        <div class="leader-card__photo" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+        <div class="leader-card__photo">
+          <img src="{{ '/assets/images/people/sarah-tun.png' | relative_url }}" alt="Dr Sarah Tun" loading="lazy">
         </div>
         <h2 class="leader-card__name">Dr Sarah Tun</h2>
         <p class="leader-card__role">Devotional Writer &amp; Speaker</p>
@@ -151,9 +141,16 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
       {% for partner in church_partners %}
       <article class="partner-card" role="listitem">
 
+        {% if partner.logo %}
+        <img src="{{ '/assets/images/' | append: partner.logo | relative_url }}"
+             alt="{{ partner.name }}"
+             class="partner-card__logo{% if partner.logo_dark %} partner-card__logo--dark{% endif %}"
+             loading="lazy">
+        {% else %}
         <div class="partner-card__initial" aria-hidden="true">
           {{ partner.name | slice: 0 }}
         </div>
+        {% endif %}
 
         <h3 class="partner-card__name">{{ partner.name }}</h3>
         <p class="partner-card__desc">{{ partner.description }}</p>
@@ -188,9 +185,16 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
       {% for partner in community_partners %}
       <article class="partner-card" role="listitem">
 
+        {% if partner.logo %}
+        <img src="{{ '/assets/images/' | append: partner.logo | relative_url }}"
+             alt="{{ partner.name }}"
+             class="partner-card__logo{% if partner.logo_dark %} partner-card__logo--dark{% endif %}"
+             loading="lazy">
+        {% else %}
         <div class="partner-card__initial" aria-hidden="true">
           {{ partner.name | slice: 0 }}
         </div>
+        {% endif %}
 
         <h3 class="partner-card__name">{{ partner.name }}</h3>
         <p class="partner-card__desc">{{ partner.description }}</p>

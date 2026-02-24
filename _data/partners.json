@@ -3,42 +3,58 @@
     "name": "Destined to Win (D2W)",
     "description": "Our parent network — empowering leaders and churches for kingdom growth.",
     "url": "https://destinedtowin.co.uk/",
+    "logo": "partners/d2w.png",
+    "logo_dark": true,
     "category": "church-family"
   },
   {
     "name": "Ethiopian Church in Reading",
     "description": "Ethiopian fellowship meeting at The Well Church, Dawlish Road. Worship every Saturday 3pm\u20136pm, prayer every Friday 6pm\u20138pm.",
     "url": "https://www.ethiopianchurchinreading.co.uk",
+    "logo": "partners/ethiopian-church.jpg",
     "category": "church-family"
   },
   {
     "name": "Kharis Church Reading",
     "description": "A revival-seeking, dynamic and lively church in the heart of Reading.",
     "url": "https://kharis.org/reading/",
+    "logo": "partners/kharis.png",
+    "logo_dark": true,
+    "category": "church-family"
+  },
+  {
+    "name": "Wellspring Ministry",
+    "description": "A Bible-believing church based at Dawlish Road, dedicated to the teaching of God's Word, prayer, worship and spiritual growth.",
+    "url": "https://wellspringministry.org",
+    "logo": "partners/wellspring.svg",
     "category": "church-family"
   },
   {
     "name": "Torch Reading",
     "description": "A helping hand from local churches — free practical, personal and emotional support for individuals and families in need across Reading.",
     "url": "https://torchhub.org.uk",
+    "logo": "partners/torch.jpg",
     "category": "community"
   },
   {
     "name": "ReadiFood",
     "description": "Emergency food bank delivering 150\u2013180 food parcels every week to families and individuals in Reading.",
     "url": "https://fcg.org.uk/readifood/",
+    "logo": "partners/readifood.png",
     "category": "community"
   },
   {
     "name": "Transform Reading",
     "description": "A network of churches and Christian organisations working together to transform our town through prayer, unity and service.",
     "url": "https://transformreading.org.uk",
+    "logo": "partners/transform-reading.png",
     "category": "community"
   },
   {
     "name": "Green Health Thames Valley",
     "description": "Free therapeutic horticulture sessions for wellbeing, serving the community since 2014.",
     "url": "https://www.greenhealth-tv.org.uk",
+    "logo": "partners/green-health.jpg",
     "category": "community"
   }
 ]
