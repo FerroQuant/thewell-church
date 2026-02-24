@@ -20,9 +20,9 @@ We have seen God provide faithfully, and we are grateful for every person who pa
 
 ## How to Give
 
-We want giving to be as simple as possible. To receive our bank details for a regular standing order or a one-off transfer, please [get in touch]({{ '/contact/' | relative_url }}) and we will send them to you directly.
+We want giving to be as simple as possible. To receive our bank details for a regular standing order or a one-off transfer, please [get in touch]({{ '/contact/?subject=giving' | relative_url }}) and we will send them to you directly.
 
-**Get in touch:** [Contact us]({{ '/contact/' | relative_url }})
+**Get in touch:** [Contact us]({{ '/contact/?subject=giving' | relative_url }})
 
 ## Gift Aid
 

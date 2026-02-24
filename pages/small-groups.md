@@ -39,4 +39,4 @@ These devotionals are shared daily on our Facebook page. Gathering with others t
 
 We want everyone at The Well to be part of a small group. Whether you are brand new to the church or you have been coming for years, there is a group for you.
 
-[Get in touch]({{ '/contact/' | relative_url }}) to find out about current groups, when and where they meet, and which one might be the right fit for you.
+[Get in touch]({{ '/contact/?subject=small-groups' | relative_url }}) to find out about current groups, when and where they meet, and which one might be the right fit for you.
