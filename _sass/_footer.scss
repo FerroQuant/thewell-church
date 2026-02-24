@@ -10,7 +10,7 @@
 .site-footer {
   background-color: $primary-dark;
   color: $text-light;
-  padding-top: $spacing-3xl;
+  padding-top: $spacing-xl;
   padding-bottom: 0;
 }
 
@@ -27,7 +27,7 @@
   // Mobile: single column
   display: grid;
   grid-template-columns: 1fr;
-  gap: $spacing-2xl;
+  gap: $spacing-lg;
 
   // Tablet: 2 columns
   @media (min-width: #{$bp-md}) {
@@ -95,7 +95,7 @@
   &__tagline {
     font-size: $text-sm;
     color: $text-light;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-md;
     max-width: 28ch;
   }
 
@@ -191,9 +191,9 @@
 // Footer bottom bar
 // -----------------------------------------------------------------------------
 .footer-bottom {
-  margin-top: $spacing-2xl;
+  margin-top: $spacing-lg;
   border-top: 1px solid rgba($white, 0.12);
-  padding: $spacing-lg $spacing-md;
+  padding: $spacing-md $spacing-md;
   max-width: $max-width;
   margin-left: auto;
   margin-right: auto;
