@@ -57,6 +57,12 @@
   object-fit: contain;
 }
 
+.partner-card__logo--dark {
+  background-color: $primary-dark;
+  border-radius: $border-radius;
+  padding: $spacing-sm;
+}
+
 .partner-card__initial {
   width: 56px;
   height: 56px;
@@ -165,4 +171,76 @@
 .btn--small {
   font-size: $text-sm;
   padding: $spacing-xs $spacing-md;
+}
+
+// -----------------------------------------------------------------------------
+// Instagram-branded card
+// -----------------------------------------------------------------------------
+.leader-card--instagram {
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(
+    180deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  ) 1;
+  background-color: #fefcfd;
+}
+
+.instagram-handle {
+  display: block;
+  font-size: $text-sm;
+  color: $text-muted;
+  margin-bottom: $spacing-md;
+
+  a {
+    color: $text-muted;
+    text-decoration: none;
+    &:hover { color: #dc2743; }
+  }
+}
+
+.btn--instagram {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  color: $white;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border: none;
+  border-radius: $border-radius;
+  text-decoration: none;
+  transition: opacity $transition-normal, transform $transition-normal;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Featured card (wider, spans 2 cols)
+// -----------------------------------------------------------------------------
+.leader-card--featured {
+  text-align: left;
+
+  .leader-card__photo {
+    margin-left: 0;
+  }
+
+  @media (min-width: $bp-md) {
+    grid-column: span 2;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Image-ready photo circle (supports both SVG and <img>)
+// -----------------------------------------------------------------------------
+.leader-card__photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
