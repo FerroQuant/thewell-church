@@ -18,6 +18,12 @@
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css?v=3' | relative_url }}">
 
+  <!-- Copy protection -->
+  <style>
+    body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    input, textarea, select { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text; user-select: text; }
+  </style>
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg?v=3' | relative_url }}">
   <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico?v=3' | relative_url }}" sizes="16x16 32x32 48x48">
@@ -70,6 +76,9 @@
 
   <!-- Site footer -->
   {% include footer.html %}
+
+  <!-- Copy protection -->
+  <script src="{{ '/assets/js/protect.js' | relative_url }}" defer></script>
 
   <!-- Mobile menu JavaScript -->
   <script src="{{ '/assets/js/mobile-menu.js' | relative_url }}" defer></script>

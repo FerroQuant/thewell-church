@@ -6,18 +6,9 @@
  * Cloudflare Email Workers.
  *
  * Deploy: cd workers/form-handler && wrangler deploy
- * Secrets: wrangler secret put TURNSTILE_SECRET
+ * Secrets needed (set via wrangler secret put):
+ *   TURNSTILE_SECRET, TO_ADDRESS, CC_ADDRESSES, FROM_ADDRESS, FROM_NAME
  */
-
-// Recipients — add/remove as needed
-const TO_ADDRESS = 'rod@thewell-church.com';
-const CC_ADDRESSES = [
-  'keith@thewell-church.com',
-  'tib@thewell-church.com',
-  'nadew@thewell-church.com'
-];
-const FROM_ADDRESS = 'noreply@thewell-church.com';
-const FROM_NAME = 'The Well Church Website';
 
 const ALLOWED_ORIGINS = [
   'https://thewell-church.com',
@@ -99,16 +90,19 @@ function buildEmailHtml(data) {
     + '</body></html>';
 }
 
-// Build raw MIME email
-function buildMimeMessage(subject, htmlBody) {
-  var boundary = 'boundary' + Date.now();
-  var toHeader = TO_ADDRESS;
-  var ccHeader = CC_ADDRESSES.length > 0 ? CC_ADDRESSES.join(', ') : '';
+// Build raw MIME email using env-configured recipients
+function buildMimeMessage(env, subject, htmlBody) {
+  var toAddr = env.TO_ADDRESS;
+  var ccList = env.CC_ADDRESSES ? env.CC_ADDRESSES.split(',').map(function(s) { return s.trim(); }) : [];
+  var fromAddr = env.FROM_ADDRESS;
+  var fromName = env.FROM_NAME || 'The Well Church Website';
 
-  var mime = 'From: "' + FROM_NAME + '" <' + FROM_ADDRESS + '>\r\n'
-    + 'To: ' + toHeader + '\r\n';
-  if (ccHeader) {
-    mime += 'Cc: ' + ccHeader + '\r\n';
+  var boundary = 'boundary' + Date.now();
+
+  var mime = 'From: "' + fromName + '" <' + fromAddr + '>\r\n'
+    + 'To: ' + toAddr + '\r\n';
+  if (ccList.length > 0) {
+    mime += 'Cc: ' + ccList.join(', ') + '\r\n';
   }
   mime += 'Subject: ' + subject + '\r\n'
     + 'MIME-Version: 1.0\r\n'
@@ -177,15 +171,12 @@ export default {
       : 'New ' + formType + ' — The Well Church Website';
 
     var htmlBody = buildEmailHtml(data);
-    var rawMime = buildMimeMessage(subject, htmlBody);
+    var rawMime = buildMimeMessage(env, subject, htmlBody);
 
     // Send via Cloudflare Email Workers
     try {
       var { EmailMessage } = await import('cloudflare:email');
-      var allRecipients = [TO_ADDRESS].concat(CC_ADDRESSES);
-
-      // Send to primary recipient
-      var msg = new EmailMessage(FROM_ADDRESS, TO_ADDRESS, rawMime);
+      var msg = new EmailMessage(env.FROM_ADDRESS, env.TO_ADDRESS, rawMime);
       await env.SEND_EMAIL.send(msg);
 
       return jsonResponse({ success: true }, 200, origin);
