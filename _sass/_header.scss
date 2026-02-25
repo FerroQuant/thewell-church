@@ -287,6 +287,13 @@
   }
 }
 
+// Nav CTA button (e.g. "Request Prayer")
+.nav-cta {
+  white-space: nowrap;
+  font-size: $text-sm;
+  padding: $spacing-sm $spacing-md;
+}
+
 // Search form
 .nav-search {
   display: flex;

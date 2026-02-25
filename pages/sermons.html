@@ -21,7 +21,7 @@ description: "Watch sermons and messages from The Well Church Reading. Browse ou
       Join us live at 10:30am each Sunday, or catch up whenever suits you.
     </p>
 
-    <div class="text-center" style="margin-bottom: 2rem;">
+    <div class="text-center section-cta--top">
       <a
         href="https://www.facebook.com/thewellreading/videos"
         class="btn btn--accent"
@@ -53,19 +53,30 @@ description: "Watch sermons and messages from The Well Church Reading. Browse ou
             {% if sermon.views %}{{ sermon.views }} views{% endif %}
           </p>
           {% endif %}
-          <a
-            href="https://www.facebook.com/watch/?v={{ sermon.facebook_id }}"
-            class="card__link card-link"
-            target="_blank"
-            rel="noopener noreferrer">
-            Watch on Facebook
-          </a>
+          <div class="card__actions">
+            <a
+              href="https://www.facebook.com/watch/?v={{ sermon.facebook_id }}"
+              class="card__link card-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              Watch on Facebook
+            </a>
+            <a
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D{{ sermon.facebook_id }}"
+              class="card__share"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Share {{ sermon.title }} on Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </a>
+          </div>
         </div>
       </article>
       {% endfor %}
     </div><!-- /.video-grid -->
 
-    <div class="text-center" style="margin-top: 3rem;">
+    <div class="text-center section-cta">
       <p>Looking for more? All our services are archived on Facebook.</p>
       <a
         href="https://www.facebook.com/thewellreading/videos"

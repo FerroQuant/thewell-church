@@ -5,6 +5,62 @@
 @import 'variables';
 
 // -----------------------------------------------------------------------------
+// Breadcrumbs
+// -----------------------------------------------------------------------------
+.breadcrumbs {
+  background-color: $bg-alt;
+  padding: $spacing-sm 0;
+  font-size: $text-sm;
+}
+
+.breadcrumbs__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $spacing-xs;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-md;
+  padding-right: $spacing-md;
+}
+
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $text-muted;
+
+  &::before {
+    content: "/";
+    color: $border-color;
+  }
+
+  &:first-child::before {
+    content: none;
+  }
+
+  &--current {
+    color: $text-primary;
+    font-weight: $font-medium;
+  }
+}
+
+.breadcrumbs__link {
+  color: $text-muted;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary;
+    text-decoration: underline;
+  }
+}
+
+// -----------------------------------------------------------------------------
 // Page header (used on interior pages)
 // -----------------------------------------------------------------------------
 .page-header {
@@ -62,16 +118,35 @@
 // -----------------------------------------------------------------------------
 // Section utilities
 // -----------------------------------------------------------------------------
+.section-heading {
+  text-align: center;
+  margin-bottom: $spacing-xs;
+}
+
 .section-subtitle {
   font-size: $text-lg;
   color: $text-muted;
   margin-top: -$spacing-sm;
   margin-bottom: $spacing-2xl;
+
+  &--center {
+    text-align: center;
+  }
+
+  &--tight {
+    margin-top: 0;
+    margin-bottom: $spacing-md;
+  }
 }
 
 .section-cta {
   text-align: center;
   margin-top: $spacing-2xl;
+
+  &--top {
+    margin-top: 0;
+    margin-bottom: $spacing-xl;
+  }
 }
 
 .placeholder-text {
@@ -84,6 +159,11 @@
     max-width: 52ch;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &--spaced {
+    margin-top: $spacing-3xl;
+    padding-top: 0;
   }
 }
 
@@ -361,6 +441,27 @@
 }
 
 // -----------------------------------------------------------------------------
+// 404 error page
+// -----------------------------------------------------------------------------
+.error-page {
+  text-align: center;
+  max-width: 600px;
+}
+
+.error-page__message {
+  font-size: $text-lg;
+  margin-bottom: $spacing-xl;
+}
+
+.error-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  justify-content: center;
+  margin-bottom: $spacing-xl;
+}
+
+// -----------------------------------------------------------------------------
 // Map embed
 // -----------------------------------------------------------------------------
 .map-embed {
@@ -371,4 +472,10 @@
   iframe {
     display: block;
   }
+}
+
+.map-iframe {
+  border: 0;
+  border-radius: $border-radius-lg;
+  display: block;
 }

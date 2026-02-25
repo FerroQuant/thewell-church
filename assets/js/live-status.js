@@ -11,7 +11,7 @@
   function check() {
     fetch(endpoint).then(function (r) { return r.json(); }).then(function (d) {
       var show = d && d.is_live;
-      buttons.forEach(function (btn) { btn.style.display = show ? '' : 'none'; });
+      buttons.forEach(function (btn) { if (show) btn.removeAttribute('hidden'); else btn.setAttribute('hidden', ''); });
     }).catch(function () { /* leave buttons hidden on error */ });
   }
 
