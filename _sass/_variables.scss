@@ -20,7 +20,7 @@ $black:          #111111;
 
 $text-primary:   #1a1a2e;   // Near-black for body text
 $text-secondary: #3a4a5a;   // Blue-grey for secondary text
-$text-muted:     #6a7a8a;   // Muted blue-grey (accessible contrast on white)
+$text-muted:     #5f6f7f;   // Muted blue-grey — WCAG AA 5.16:1 on white, 4.84:1 on bg
 $text-light:     rgba(255, 255, 255, 0.9);  // White text on dark bg
 
 $border-color:   #d0dce8;   // Subtle blue border
