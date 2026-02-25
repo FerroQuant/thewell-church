@@ -1,0 +1,138 @@
+// =============================================================================
+// PRINT STYLES
+// Clean, readable print output for service times, contact info, and content
+// =============================================================================
+@import 'variables';
+
+@media print {
+  // Hide non-essential UI elements
+  .site-header,
+  .site-footer,
+  .nav-toggle,
+  .nav-menu,
+  .back-to-top,
+  .cta-banner,
+  .hero,
+  .section-wave,
+  .video-facade,
+  .video-embed,
+  .video-grid,
+  .gallery-grid,
+  .fb-iframe,
+  .btn,
+  .btn--primary,
+  .btn--accent,
+  .btn--outline,
+  .btn--outline-primary,
+  .footer-social,
+  .skip-link,
+  .search-page-form,
+  .nav-search {
+    display: none !important;
+  }
+
+  // Reset page layout
+  body {
+    padding-top: 0;
+    background: #fff;
+    color: #000;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  // Remove shadows and rounded corners
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  // Make all text black
+  h1, h2, h3, h4, h5, h6,
+  p, li, td, th, address {
+    color: #000 !important;
+  }
+
+  // Show URLs after links
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+  }
+
+  // Don't show URL for internal/anchor links
+  a[href^="#"]::after,
+  a[href^="javascript"]::after,
+  a[href^="/"]::after {
+    content: "";
+  }
+
+  // Page headers: simple black text
+  .page-header {
+    background: none !important;
+    color: #000 !important;
+    padding: 1rem 0;
+    border-bottom: 2px solid #000;
+
+    h1 {
+      color: #000 !important;
+      font-size: 24pt;
+    }
+
+    .page-subtitle {
+      color: #333 !important;
+    }
+  }
+
+  // Service times: prominent for print
+  .service-time {
+    font-size: 16pt;
+    color: #000 !important;
+  }
+
+  .service-time-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    page-break-inside: avoid;
+  }
+
+  // Sections: remove backgrounds
+  .section,
+  .section--alt {
+    background: none !important;
+    padding: 1rem 0;
+  }
+
+  // Container: full width for print
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  // Avoid page breaks inside cards
+  .leader-card,
+  .partner-card,
+  .event-item,
+  .expect-card {
+    page-break-inside: avoid;
+  }
+
+  // Map: hide (not useful in print)
+  .map-embed,
+  .map-iframe,
+  iframe[src*="google.com/maps"] {
+    display: none !important;
+  }
+
+  // Images: moderate size, avoid break
+  img {
+    max-width: 300px !important;
+    page-break-inside: avoid;
+  }
+
+  // Copy protection: allow selection in print
+  body {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    user-select: text !important;
+  }
+}

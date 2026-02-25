@@ -19,7 +19,7 @@
         rel="stylesheet">
 
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=4' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=5' | relative_url }}">
 
   <!-- Preload hero image on homepage for faster LCP -->
   {% if page.url == '/' %}
@@ -42,15 +42,14 @@
   <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  {% if page.image %}
-  <meta property="og:image" content="{{ page.image | absolute_url }}">
-  {% endif %}
+  <meta property="og:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/church/hero.jpg' | absolute_url }}{% endif %}">
   <meta property="og:site_name" content="{{ site.title }}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
   <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:image" content="{% if page.image %}{{ page.image | absolute_url }}{% else %}{{ '/assets/images/church/hero.jpg' | absolute_url }}{% endif %}">
 
   <!-- Jekyll SEO tag -->
   {% seo %}
@@ -82,6 +81,7 @@
 
   <!-- Page content -->
   <main id="main-content" tabindex="-1">
+    {% include breadcrumbs.html %}
     {{ content }}
   </main>
 

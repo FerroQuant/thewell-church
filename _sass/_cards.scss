@@ -143,3 +143,32 @@
   font-size: $text-sm;
   color: $text-muted;
 }
+
+.card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  margin-top: auto;
+}
+
+.card__share {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: $text-muted;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+}

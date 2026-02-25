@@ -82,6 +82,12 @@
   background-color: $black;
 }
 
+// Facebook iframe (generic — border/overflow removed via class not inline style)
+.fb-iframe {
+  border: none;
+  overflow: hidden;
+}
+
 // 16:9 aspect ratio wrapper for Facebook embeds
 .video-embed {
   position: relative;
