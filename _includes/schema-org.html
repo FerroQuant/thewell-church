@@ -10,10 +10,12 @@
   "@context": "https://schema.org",
   "@type": "Church",
   "name": "{{ site.title }}",
+  "alternateName": "Whitley Community Church Trust",
   "description": "{{ site.description }}",
   "url": "{{ site.url }}",
   "logo": "{{ '/assets/images/logo.svg' | absolute_url }}",
   "image": "{{ '/assets/images/church/hero.jpg' | absolute_url }}",
+  "telephone": "",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Between 29 & 31 Dawlish Road",
@@ -27,19 +29,64 @@
     "latitude": {{ site.church.map_lat }},
     "longitude": {{ site.church.map_lng }}
   },
+  "areaServed": {
+    "@type": "City",
+    "name": "Reading",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Berkshire"
+    }
+  },
   "sameAs": [
     "{{ site.church.facebook }}"
   ],
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": "Sunday",
-    "opens": "10:30",
-    "closes": "12:00"
-  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "10:30",
+      "closes": "12:00",
+      "description": "Sunday Morning Service"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Thursday",
+      "opens": "19:00",
+      "closes": "20:00",
+      "description": "Thursday Prayer Meeting"
+    }
+  ],
   "hasMap": "https://www.google.com/maps?q=The+Well+Church,+Dawlish+Road,+Reading+RG2+7SD",
   "isAccessibleForFree": true,
   "publicAccess": true,
-  "nonprofitStatus": "Charity"
+  "nonprofitStatus": "Charity",
+  "knowsLanguage": ["en", "am"],
+  "event": {
+    "@type": "Event",
+    "name": "Sunday Morning Service",
+    "description": "Weekly worship service with praise, teaching, and kids ministry. Live-streamed on Facebook.",
+    "startDate": "{{ 'now' | date: '%Y-%m-%d' }}T10:30:00",
+    "endDate": "{{ 'now' | date: '%Y-%m-%d' }}T12:00:00",
+    "eventSchedule": {
+      "@type": "Schedule",
+      "repeatFrequency": "P1W",
+      "byDay": "https://schema.org/Sunday",
+      "startTime": "10:30",
+      "endTime": "12:00"
+    },
+    "location": {
+      "@type": "Place",
+      "name": "The Well Church",
+      "address": "Dawlish Road, Reading RG2 7SD"
+    },
+    "isAccessibleForFree": true,
+    "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+    "organizer": {
+      "@type": "Church",
+      "name": "The Well Church",
+      "url": "{{ site.url }}"
+    }
+  }
 }
 </script>
 <script type="application/ld+json">
