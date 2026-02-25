@@ -18,15 +18,11 @@ layout: default
 {% comment %} 1. Hero {% endcomment %}
 {% include hero.html %}
 
-{% comment %} ---- Wave divider ---- {% endcomment %}
-<div class="section-wave section-wave--primary" aria-hidden="true">
-  <svg viewBox="0 0 1440 56" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0,32 C360,72 1080,0 1440,40 L1440,56 L0,56 Z" fill="#f5f8fb"/>
-  </svg>
-</div>
+{% comment %} ---- Animated wave divider ---- {% endcomment %}
+{% include wave-animated.html fill="bg" tall="true" %}
 
 {% comment %} 2. Welcome strip {% endcomment %}
-<section class="section" aria-labelledby="welcome-heading">
+<section class="section water-shimmer" aria-labelledby="welcome-heading">
   <div class="container">
     <div class="welcome-strip fade-in">
       <span class="welcome-strip__eyebrow">Welcome</span>
@@ -46,7 +42,8 @@ layout: default
 </section>
 
 {% comment %} 3. Watch Our Services {% endcomment %}
-<section class="section--alt" aria-labelledby="videos-heading">
+{% include wave-animated.html fill="bg-alt" %}
+<section class="section--alt water-shimmer" aria-labelledby="videos-heading">
   <div class="container">
 
     <h2 id="videos-heading" class="section-heading">Watch Our Services</h2>
@@ -104,6 +101,7 @@ layout: default
 </section>
 
 {% comment %} 4. What to Expect — icon card grid {% endcomment %}
+{% include wave-animated.html fill="bg" flip="true" %}
 <section class="section" aria-labelledby="expect-heading">
   <div class="container">
 
@@ -114,7 +112,7 @@ layout: default
 
     <div class="expect-grid stagger-children">
 
-      <div class="expect-card">
+      <div class="expect-card ripple-card">
         <div class="expect-card__icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -129,7 +127,7 @@ layout: default
         </p>
       </div>
 
-      <div class="expect-card">
+      <div class="expect-card ripple-card">
         <div class="expect-card__icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M9 18V5l12-2v13"/>
@@ -143,7 +141,7 @@ layout: default
         </p>
       </div>
 
-      <div class="expect-card">
+      <div class="expect-card ripple-card">
         <div class="expect-card__icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
@@ -156,7 +154,7 @@ layout: default
         </p>
       </div>
 
-      <div class="expect-card">
+      <div class="expect-card ripple-card">
         <div class="expect-card__icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -168,7 +166,7 @@ layout: default
         </p>
       </div>
 
-      <div class="expect-card">
+      <div class="expect-card ripple-card">
         <div class="expect-card__icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -180,7 +178,7 @@ layout: default
         </p>
       </div>
 
-      <div class="expect-card">
+      <div class="expect-card ripple-card">
         <div class="expect-card__icon" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="10"/>
@@ -204,6 +202,7 @@ layout: default
 </section>
 
 {% comment %} 5. Life at The Well — real photo gallery {% endcomment %}
+{% include wave-animated.html fill="bg-alt" %}
 <section class="section--alt" aria-labelledby="gallery-heading">
   <div class="container">
 
@@ -309,10 +308,11 @@ layout: default
 </section>
 
 {% comment %} Find Us mini-card — scrolls to the full map in Join Us section {% endcomment %}
+{% include wave-animated.html fill="bg" flip="true" %}
 <section class="section find-us-section" aria-label="Find us">
   <div class="container">
     <div class="find-us-card fade-in">
-      <div class="find-us-card__icon" aria-hidden="true">
+      <div class="find-us-card__icon water-bob--slow" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
           <circle cx="12" cy="10" r="3"/>
@@ -329,29 +329,30 @@ layout: default
 </section>
 
 {% comment %} 6. Community Stats {% endcomment %}
-<section class="section--alt" aria-labelledby="stats-heading">
+{% include wave-animated.html fill="bg-alt" %}
+<section class="section--alt water-shimmer" aria-labelledby="stats-heading">
   <div class="container">
 
     <h2 id="stats-heading" class="sr-only">Our community in numbers</h2>
 
     <div class="stats-strip stagger-children">
 
-      <div class="stat-card">
+      <div class="stat-card depth-card">
         <span class="stat-card__number">967</span>
         <span class="stat-card__label">Followers</span>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card depth-card">
         <span class="stat-card__number">Weekly</span>
         <span class="stat-card__label">Live Services</span>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card depth-card">
         <span class="stat-card__number">10+</span>
         <span class="stat-card__label">Years in Reading</span>
       </div>
 
-      <div class="stat-card">
+      <div class="stat-card depth-card">
         <span class="stat-card__number">One</span>
         <span class="stat-card__label">Big Family</span>
       </div>
@@ -361,6 +362,7 @@ layout: default
 </section>
 
 {% comment %} 6. Scripture Quote {% endcomment %}
+{% include wave-animated.html fill="bg" flip="true" %}
 <section class="section" aria-label="Scripture">
   <div class="container">
     <div class="scripture-quote fade-in">

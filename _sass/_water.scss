@@ -1,0 +1,307 @@
+// =============================================================================
+// WATER THEME
+// Animated waves, caustic shimmer, floating bubbles, ripple effects
+// All motion respects prefers-reduced-motion
+// =============================================================================
+@import 'variables';
+
+// -----------------------------------------------------------------------------
+// Keyframes
+// -----------------------------------------------------------------------------
+
+// Horizontal wave drift — creates flowing water illusion
+@keyframes waveDrift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+// Slower counter-drift for depth
+@keyframes waveDriftReverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+// Gentle vertical bob for floating elements
+@keyframes waterBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+// Bubble float upward
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.4);
+    opacity: 0;
+  }
+}
+
+// Water caustic shimmer — subtle light play
+@keyframes causticShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+// Ripple expand on hover
+@keyframes rippleExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+// Gentle surface shimmer
+@keyframes surfaceShimmer {
+  0%, 100% { opacity: 0.03; }
+  50%      { opacity: 0.08; }
+}
+
+// =============================================================================
+// ANIMATED WAVE DIVIDER
+// Multi-layer SVGs that flow horizontally — replaces static section-wave
+// =============================================================================
+
+.wave-animated {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+  // Default height — override with modifier
+  height: 60px;
+
+  @media (min-width: $bp-md) {
+    height: 80px;
+  }
+
+  &--tall {
+    height: 80px;
+    @media (min-width: $bp-md) {
+      height: 110px;
+    }
+  }
+
+  &--flip {
+    transform: scaleY(-1);
+  }
+}
+
+// Each wave layer — absolutely positioned, double-width for seamless loop
+.wave-animated__layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+
+  svg {
+    display: block;
+    width: 50%;
+    height: 100%;
+    float: left;
+  }
+}
+
+// Animation applied only when motion is OK
+@media (prefers-reduced-motion: no-preference) {
+  .wave-animated__layer--1 {
+    animation: waveDrift 8s linear infinite;
+  }
+  .wave-animated__layer--2 {
+    animation: waveDriftReverse 12s linear infinite;
+  }
+  .wave-animated__layer--3 {
+    animation: waveDrift 16s linear infinite;
+  }
+}
+
+// Fill colours for wave layers
+.wave-fill--bg      { fill: $bg; }
+.wave-fill--bg-alt  { fill: $bg-alt; }
+.wave-fill--white   { fill: $white; }
+.wave-fill--primary { fill: $primary-dark; }
+
+// =============================================================================
+// HERO WATER EFFECTS
+// Floating bubbles + caustic shimmer overlay
+// =============================================================================
+
+// Bubbles container — positioned over the hero
+.hero-bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+// Individual bubble
+.hero-bubble {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba($white, 0.25) 0%,
+    rgba($accent-light, 0.08) 60%,
+    transparent 100%
+  );
+  border: 1px solid rgba($white, 0.12);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-bubble {
+    animation: bubbleRise linear infinite;
+  }
+
+  // Stagger 8 bubbles across the hero width
+  .hero-bubble:nth-child(1) { left: 5%;  width: 20px; height: 20px; animation-duration: 12s; animation-delay: 0s; }
+  .hero-bubble:nth-child(2) { left: 15%; width: 14px; height: 14px; animation-duration: 16s; animation-delay: 2s; }
+  .hero-bubble:nth-child(3) { left: 30%; width: 24px; height: 24px; animation-duration: 14s; animation-delay: 4s; }
+  .hero-bubble:nth-child(4) { left: 45%; width: 10px; height: 10px; animation-duration: 18s; animation-delay: 1s; }
+  .hero-bubble:nth-child(5) { left: 60%; width: 18px; height: 18px; animation-duration: 13s; animation-delay: 3s; }
+  .hero-bubble:nth-child(6) { left: 75%; width: 12px; height: 12px; animation-duration: 20s; animation-delay: 5s; }
+  .hero-bubble:nth-child(7) { left: 85%; width: 22px; height: 22px; animation-duration: 15s; animation-delay: 2.5s; }
+  .hero-bubble:nth-child(8) { left: 92%; width: 8px;  height: 8px;  animation-duration: 22s; animation-delay: 7s; }
+}
+
+// Static fallback — hide bubbles entirely when reduced motion preferred
+@media (prefers-reduced-motion: reduce) {
+  .hero-bubbles {
+    display: none;
+  }
+}
+
+// Caustic shimmer overlay — light refracting through water
+.hero-caustics {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 300px 200px at 20% 60%, rgba($accent-light, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 250px 150px at 70% 30%, rgba($white, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 200px 300px at 50% 80%, rgba($accent, 0.04) 0%, transparent 70%);
+  background-size: 200% 200%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-caustics {
+    animation: causticShimmer 12s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-caustics {
+    display: none;
+  }
+}
+
+// =============================================================================
+// WATER SURFACE SHIMMER
+// Subtle light-play on section backgrounds
+// =============================================================================
+
+.water-shimmer {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba($accent-light, 0.04) 15%,
+        transparent 30%
+      );
+    background-size: 300% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .water-shimmer::before {
+    animation: causticShimmer 18s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .water-shimmer::before {
+    display: none;
+  }
+}
+
+// =============================================================================
+// RIPPLE HOVER — cards that ripple like water on click/hover
+// =============================================================================
+
+.ripple-card {
+  position: relative;
+  overflow: hidden;
+
+  // Ripple circle — triggered via :active
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba($accent-light, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ripple-card:active::after {
+    animation: rippleExpand 0.6s ease-out forwards;
+  }
+}
+
+// =============================================================================
+// WATER-BOB — gentle floating motion for highlight elements
+// =============================================================================
+
+@media (prefers-reduced-motion: no-preference) {
+  .water-bob {
+    animation: waterBob 4s ease-in-out infinite;
+  }
+
+  .water-bob--slow {
+    animation: waterBob 6s ease-in-out infinite;
+  }
+}
+
+// =============================================================================
+// DEPTH SHADOWS — layered shadow system for 3D feel
+// =============================================================================
+
+.depth-card {
+  transition: box-shadow $transition-normal, transform $transition-normal;
+
+  &:hover {
+    box-shadow:
+      0 8px 30px rgba($primary-dark, 0.12),
+      0 4px 12px rgba($primary, 0.08),
+      inset 0 1px 0 rgba($white, 0.6);
+    transform: translateY(-6px) scale(1.01);
+  }
+}
