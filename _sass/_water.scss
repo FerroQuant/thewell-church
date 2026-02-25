@@ -374,159 +374,80 @@
 }
 
 // =============================================================================
-// DOVE ANIMATION — flies in, lands on buttons, drinks water, flies off
-// Plays once on page load. Dove is a symbol of the Holy Spirit.
-// Choreography: fly in → land on Request Prayer → hop to Plan Your Visit
-//               → bend down & drink → fly off
+// INTERACTIVE FISH TANK
+// Colourful fish swim around, avoid the mouse cursor, and blow bubbles.
+// JS (fish.js) handles movement — CSS handles styling and animations.
 // =============================================================================
 
-// --- Flight path: 14s total ---
-// Key positions (dove faces left via scaleX(-1)):
-//   Request Prayer button center ≈ 715px → dove left 51vw
-//   Plan Your Visit button center ≈ 546px → dove left 38vw
-//   Button tops ≈ 550px → dove feet (at 82/90px) need top ≈ 58vh
-@keyframes doveFlightPath {
+// Fish bubble rising animation
+@keyframes fishBubbleRise {
   0% {
-    transform: translate(110vw, -10vh) scaleX(-1) rotate(-8deg);
-    opacity: 0;
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
   }
-  3% { opacity: 1; }
-  // Swoop in toward Request Prayer button
-  14% {
-    transform: translate(51vw, 58vh) scaleX(-1) rotate(3deg);
-  }
-  // Landed on Request Prayer — instant settle
-  15% {
-    transform: translate(51vw, 58vh) scaleX(-1) rotate(0deg);
-  }
-  // Head bobs — looking around on Request Prayer
-  22% { transform: translate(51vw, 58vh) scaleX(-1) rotate(5deg); }
-  24% { transform: translate(51vw, 58vh) scaleX(-1) rotate(0deg); }
-  27% { transform: translate(51vw, 58vh) scaleX(-1) rotate(4deg); }
-  29% { transform: translate(51vw, 58vh) scaleX(-1) rotate(0deg); }
-  // Hop arc to Plan Your Visit (jump up then down)
-  33% {
-    transform: translate(44vw, 50vh) scaleX(-1) rotate(-3deg);
-  }
-  38% {
-    transform: translate(38vw, 58vh) scaleX(-1) rotate(0deg);
-  }
-  // Standing on Plan Your Visit — pause
-  42% {
-    transform: translate(38vw, 58vh) scaleX(-1) rotate(0deg);
-  }
-  // Bend down to drink — three sips
-  46% { transform: translate(38vw, 58vh) scaleX(-1) rotate(22deg); }
-  49% { transform: translate(38vw, 58vh) scaleX(-1) rotate(0deg); }
-  52% { transform: translate(38vw, 58vh) scaleX(-1) rotate(24deg); }
-  55% { transform: translate(38vw, 58vh) scaleX(-1) rotate(0deg); }
-  58% { transform: translate(38vw, 58vh) scaleX(-1) rotate(20deg); }
-  61% { transform: translate(38vw, 58vh) scaleX(-1) rotate(0deg); }
-  // Look around
-  66% {
-    transform: translate(38vw, 58vh) scaleX(-1) rotate(-4deg);
-  }
-  // Take off — fly left and upward
-  75% {
-    transform: translate(20vw, 30vh) scaleX(-1) rotate(-10deg);
-  }
-  88% {
-    transform: translate(-10vw, -15vh) scaleX(-1) rotate(-18deg);
-  }
-  92% { opacity: 1; }
   100% {
-    transform: translate(-35vw, -30vh) scaleX(-1) rotate(-22deg);
+    transform: translateY(-100px) scale(0.3);
     opacity: 0;
   }
 }
 
-// --- Wing flap synced to flight/standing phases ---
-@keyframes doveWingFlap {
-  // Flying in — flapping (big strokes)
-  0%  { transform: rotate(0deg); }
-  2%  { transform: rotate(-60deg); }
-  4%  { transform: rotate(10deg); }
-  6%  { transform: rotate(-60deg); }
-  8%  { transform: rotate(10deg); }
-  10% { transform: rotate(-60deg); }
-  12% { transform: rotate(10deg); }
-  // Landing flare
-  14% { transform: rotate(-30deg); }
-  // Landed — wings folded
-  16%, 29% { transform: rotate(0deg); }
-  // Hop — small flutter
-  31% { transform: rotate(-35deg); }
-  33% { transform: rotate(5deg); }
-  35% { transform: rotate(-35deg); }
-  37% { transform: rotate(5deg); }
-  // Standing/drinking — wings folded
-  38%, 66% { transform: rotate(0deg); }
-  // Flying out — flapping (big strokes)
-  68% { transform: rotate(-60deg); }
-  71% { transform: rotate(10deg); }
-  74% { transform: rotate(-60deg); }
-  77% { transform: rotate(10deg); }
-  80% { transform: rotate(-60deg); }
-  83% { transform: rotate(10deg); }
-  86% { transform: rotate(-60deg); }
-  89% { transform: rotate(10deg); }
-  92% { transform: rotate(-60deg); }
-  100% { transform: rotate(-40deg); }
+// Subtle body wiggle — makes fish look alive while swimming
+@keyframes fishWiggle {
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  25%      { transform: rotate(1.5deg) scaleY(0.97); }
+  75%      { transform: rotate(-1.5deg) scaleY(1.03); }
 }
 
-// --- Legs: hidden in flight, snap-visible when standing ---
-@keyframes doveLegShow {
-  0%, 14.9% { opacity: 0; }
-  15% { opacity: 1; }
-  66% { opacity: 1; }
-  67%, 100% { opacity: 0; }
-}
-
-.dove-animation {
+.fish-tank {
   position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fish {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 120px;
-  height: 90px;
-  z-index: 100;
-  pointer-events: none;
-  color: $white;
-  filter: drop-shadow(0 2px 10px rgba($primary-dark, 0.35));
-}
+  will-change: transform;
+  filter: drop-shadow(0 1px 4px rgba($primary-dark, 0.15));
+  opacity: 0.8;
 
-.dove-svg {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.dove-wing {
-  // Explicit SVG viewport coordinates — fill-box calculates wrong origin on curves
-  transform-origin: 44px 44px;
-}
-
-.dove-legs {
-  opacity: 0;
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .dove-animation {
-    animation: doveFlightPath 14s ease-in-out 1s forwards;
-    opacity: 0;
+  .fish svg {
+    animation: fishWiggle 0.8s ease-in-out infinite;
   }
+}
 
-  .dove-wing {
-    // Linear timing ensures rapid keyframe flaps are visually crisp
-    animation: doveWingFlap 14s linear 1s forwards;
-  }
+// Bubbles breathed by fish
+.fish-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba($white, 0.5),
+    rgba($accent-light, 0.15)
+  );
+  border: 1px solid rgba($white, 0.25);
+  pointer-events: none;
+}
 
-  .dove-legs {
-    animation: doveLegShow 14s linear 1s forwards;
+@media (prefers-reduced-motion: no-preference) {
+  .fish-bubble {
+    animation: fishBubbleRise 2.5s ease-out forwards;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dove-animation {
+  .fish-tank {
     display: none;
   }
 }
