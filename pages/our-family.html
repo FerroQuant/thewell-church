@@ -145,7 +145,8 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
         <img src="{{ '/assets/images/' | append: partner.logo | relative_url }}"
              alt="{{ partner.name }}"
              class="partner-card__logo{% if partner.logo_dark %} partner-card__logo--dark{% endif %}"
-             loading="lazy">
+             loading="lazy"
+             decoding="async">
         {% else %}
         <div class="partner-card__initial" aria-hidden="true">
           {{ partner.name | slice: 0 }}
@@ -189,7 +190,8 @@ description: "Meet the leadership team at The Well Church in Reading, the missio
         <img src="{{ '/assets/images/' | append: partner.logo | relative_url }}"
              alt="{{ partner.name }}"
              class="partner-card__logo{% if partner.logo_dark %} partner-card__logo--dark{% endif %}"
-             loading="lazy">
+             loading="lazy"
+             decoding="async">
         {% else %}
         <div class="partner-card__initial" aria-hidden="true">
           {{ partner.name | slice: 0 }}
