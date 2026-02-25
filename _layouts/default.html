@@ -8,6 +8,7 @@
 
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta name="theme-color" content="#073f6e">
+  <meta name="format-detection" content="telephone=no">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
 
   <!-- Preconnect hints -->
@@ -21,7 +22,7 @@
         rel="stylesheet">
 
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=7' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=8' | relative_url }}">
 
   <!-- Preload hero image on homepage for faster LCP -->
   {% if page.url == '/' %}

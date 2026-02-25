@@ -225,6 +225,8 @@
 .find-us-section {
   padding-top: $spacing-2xl;
   padding-bottom: $spacing-2xl;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
 }
 
 .find-us-card {
