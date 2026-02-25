@@ -3,44 +3,37 @@
 
   Parameters:
     fill     – colour of the wave (bg, bg-alt, white, primary). Default: bg
+    from     – background colour of the section ABOVE (primary, bg, bg-alt, white). Default: primary
     flip     – set to "true" to flip vertically
     tall     – set to "true" for taller wave
 {% endcomment %}
 
 {% assign wave_fill = include.fill | default: "bg" %}
-{% assign wave_class = "wave-animated" %}
+{% assign wave_from = include.from | default: "primary" %}
+{% assign wave_class = "wave-animated wave-animated--from-" | append: wave_from %}
 {% if include.flip == "true" %}{% assign wave_class = wave_class | append: " wave-animated--flip" %}{% endif %}
 {% if include.tall == "true" %}{% assign wave_class = wave_class | append: " wave-animated--tall" %}{% endif %}
 
 <div class="{{ wave_class }}" aria-hidden="true">
 
-  {%- comment %} Layer 3 (back) — lightest, slowest {% endcomment -%}
+  {%- comment %} Layer 3 (back) — lightest, slowest. Single SVG with doubled path = no tiling seam {% endcomment -%}
   <div class="wave-animated__layer wave-animated__layer--3">
-    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path class="wave-fill--{{ wave_fill }}" d="M0,80 C240,110 480,40 720,70 C960,100 1200,30 1440,60 L1440,120 L0,120 Z" opacity="0.3"/>
-    </svg>
-    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path class="wave-fill--{{ wave_fill }}" d="M0,80 C240,110 480,40 720,70 C960,100 1200,30 1440,60 L1440,120 L0,120 Z" opacity="0.3"/>
+    <svg viewBox="0 0 2880 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path class="wave-fill--{{ wave_fill }}" d="M0,70 C240,100 480,40 720,70 C960,100 1200,40 1440,70 C1680,100 1920,40 2160,70 C2400,100 2640,40 2880,70 L2880,120 L0,120 Z" opacity="0.3"/>
     </svg>
   </div>
 
   {%- comment %} Layer 2 (mid) — medium opacity, medium speed {% endcomment -%}
   <div class="wave-animated__layer wave-animated__layer--2">
-    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path class="wave-fill--{{ wave_fill }}" d="M0,60 C360,100 720,20 1080,60 C1260,80 1380,50 1440,70 L1440,120 L0,120 Z" opacity="0.5"/>
-    </svg>
-    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path class="wave-fill--{{ wave_fill }}" d="M0,60 C360,100 720,20 1080,60 C1260,80 1380,50 1440,70 L1440,120 L0,120 Z" opacity="0.5"/>
+    <svg viewBox="0 0 2880 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path class="wave-fill--{{ wave_fill }}" d="M0,60 C320,85 640,35 960,60 C1120,72 1280,48 1440,60 C1760,85 2080,35 2400,60 C2560,72 2720,48 2880,60 L2880,120 L0,120 Z" opacity="0.5"/>
     </svg>
   </div>
 
   {%- comment %} Layer 1 (front) — full opacity, fastest {% endcomment -%}
   <div class="wave-animated__layer wave-animated__layer--1">
-    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path class="wave-fill--{{ wave_fill }}" d="M0,50 C180,90 360,20 540,50 C720,80 900,30 1080,55 C1260,80 1380,40 1440,65 L1440,120 L0,120 Z"/>
-    </svg>
-    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path class="wave-fill--{{ wave_fill }}" d="M0,50 C180,90 360,20 540,50 C720,80 900,30 1080,55 C1260,80 1380,40 1440,65 L1440,120 L0,120 Z"/>
+    <svg viewBox="0 0 2880 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path class="wave-fill--{{ wave_fill }}" d="M0,50 C240,75 480,25 720,50 C960,75 1200,25 1440,50 C1680,75 1920,25 2160,50 C2400,75 2640,25 2880,50 L2880,120 L0,120 Z"/>
     </svg>
   </div>
 
