@@ -2,7 +2,7 @@
 // HERO
 // Single background image with gradient overlay and animated content
 // =============================================================================
-@use 'variables' as *;
+@import 'variables';
 
 @keyframes heroFadeUp {
   from {
