@@ -23,7 +23,7 @@
         rel="stylesheet">
 
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=10' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css?v=11' | relative_url }}">
 
   <!-- Preload hero image on homepage for faster LCP -->
   {% if page.url == '/' %}
@@ -72,6 +72,22 @@
       </filter>
     </defs>
   </svg>
+
+  <!-- Page-wide floating bubbles -->
+  <div class="page-bubbles" aria-hidden="true">
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+    <span class="page-bubble"></span>
+  </div>
 
   <!-- Skip to main content (screen reader / keyboard nav) -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
