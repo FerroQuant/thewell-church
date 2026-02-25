@@ -1,7 +1,8 @@
 /**
  * video-facade.js — Lightweight Facebook video facade.
  * Shows a static thumbnail + play button instead of loading a heavy iframe.
- * On click, replaces with the real Facebook iframe embed.
+ * On click/Enter, replaces with the real Facebook iframe embed.
+ * Uses event delegation for efficiency with many cards.
  */
 (function () {
   'use strict';
@@ -13,6 +14,7 @@
     iframe.src = 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fthewellreading%2Fvideos%2F' + encodeURIComponent(videoId) + '%2F&show_text=false&appId';
     iframe.setAttribute('allowfullscreen', '');
     iframe.setAttribute('allow', 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');
+    iframe.setAttribute('loading', 'lazy');
     iframe.style.border = 'none';
     iframe.style.position = 'absolute';
     iframe.style.top = '0';
@@ -24,10 +26,10 @@
   }
 
   function activateFacade(wrapper) {
+    if (wrapper.classList.contains('video-facade--active')) return;
     try {
       var iframe = createIframe(wrapper);
       if (!iframe) {
-        // No video ID — show fallback link
         showFallback(wrapper);
         return;
       }
@@ -51,17 +53,19 @@
     wrapper.appendChild(link);
   }
 
-  // Attach click handlers to all facades
-  var facades = document.querySelectorAll('.video-facade');
-  for (var i = 0; i < facades.length; i++) {
-    facades[i].addEventListener('click', function () {
-      activateFacade(this);
-    });
-    facades[i].addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') {
+  // Event delegation — single listener on document for all facades
+  document.addEventListener('click', function (e) {
+    var facade = e.target.closest('.video-facade');
+    if (facade) activateFacade(facade);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      var facade = e.target.closest('.video-facade');
+      if (facade) {
         e.preventDefault();
-        activateFacade(this);
+        activateFacade(facade);
       }
-    });
-  }
+    }
+  });
 })();

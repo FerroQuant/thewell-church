@@ -18,6 +18,7 @@
   box-shadow: $shadow-sm;
   border-bottom: 1px solid $border-color;
   transition: background-color $transition-normal, box-shadow $transition-normal;
+  will-change: background-color, box-shadow;
 
   // Applied by JS when user scrolls past the hero
   &.is-scrolled {

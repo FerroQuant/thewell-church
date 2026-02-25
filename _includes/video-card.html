@@ -5,7 +5,8 @@
     <img class="card__image"
          src="{{ video.thumbnails.data[0].uri | default: video.thumbnails.data[0].url }}"
          alt="{{ video.title | escape }}"
-         loading="lazy">
+         loading="lazy"
+         decoding="async">
   </div>
   {% endif %}
   <div class="card__body">
