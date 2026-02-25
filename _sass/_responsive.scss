@@ -2,7 +2,7 @@
 // RESPONSIVE
 // Mobile-first breakpoint utilities and overrides
 // =============================================================================
-@import 'variables';
+@use 'variables' as *;
 
 // -----------------------------------------------------------------------------
 // Responsive heading sizes (mobile-first, scale up)

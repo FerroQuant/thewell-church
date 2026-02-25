@@ -2,7 +2,7 @@
 // FORMS
 // Shared form styles: inputs, labels, buttons, privacy notice, prayer page
 // =============================================================================
-@import 'variables';
+@use 'variables' as *;
 
 // -----------------------------------------------------------------------------
 // Form groups and labels

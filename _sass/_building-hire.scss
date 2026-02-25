@@ -2,7 +2,7 @@
 // BUILDING HIRE
 // Styles for the building hire enquiry form page
 // =============================================================================
-@import 'variables';
+@use 'variables' as *;
 
 .hire-intro {
   max-width: 680px;

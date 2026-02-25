@@ -2,7 +2,7 @@
 // SEARCH
 // Client-side Lunr.js search page styles
 // =============================================================================
-@import 'variables';
+@use 'variables' as *;
 
 // -----------------------------------------------------------------------------
 // Search form in page-header

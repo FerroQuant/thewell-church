@@ -2,7 +2,7 @@
 // PRINT STYLES
 // Clean, readable print output for service times, contact info, and content
 // =============================================================================
-@import 'variables';
+@use 'variables' as *;
 
 @media print {
   // Hide non-essential UI elements
