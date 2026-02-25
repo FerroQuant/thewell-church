@@ -1,18 +1,18 @@
 ---
 ---
 
-@import 'base';
-@import 'header';
-@import 'hero';
-@import 'cards';
-@import 'forms';
-@import 'building-hire';
-@import 'pages';
-@import 'partners';
-@import 'video';
-@import 'search';
-@import 'calendar';
-@import 'footer';
-@import 'responsive';
-@import 'animations';
-@import 'print';
+@use 'base';
+@use 'header';
+@use 'hero';
+@use 'cards';
+@use 'forms';
+@use 'building-hire';
+@use 'pages';
+@use 'partners';
+@use 'video';
+@use 'search';
+@use 'calendar';
+@use 'footer';
+@use 'responsive';
+@use 'animations';
+@use 'print';

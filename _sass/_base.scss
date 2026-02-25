@@ -2,7 +2,7 @@
 // BASE
 // Box model reset, body, headings, links, containers, sections, buttons
 // =============================================================================
-@import 'variables';
+@use 'variables' as *;
 
 // -----------------------------------------------------------------------------
 // Copy protection — prevent casual text selection

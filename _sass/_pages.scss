@@ -2,7 +2,7 @@
 // PAGES
 // Shared styles for page headers, content bodies, section utilities, maps
 // =============================================================================
-@import 'variables';
+@use 'variables' as *;
 
 // -----------------------------------------------------------------------------
 // Breadcrumbs
