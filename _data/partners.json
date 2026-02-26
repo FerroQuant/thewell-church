@@ -31,9 +31,10 @@
   },
   {
     "name": "Torch Reading",
-    "description": "A helping hand from local churches — free practical, personal and emotional support for individuals and families in need across Reading.",
+    "description": "A helping hand from local churches — practical, personal and emotional support for individuals and families in need across Reading.",
     "url": "https://torchhub.org.uk",
-    "logo": "partners/torch.jpg",
+    "logo": "partners/torch.svg",
+    "logo_dark": true,
     "category": "community"
   },
   {
