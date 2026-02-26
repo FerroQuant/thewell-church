@@ -17,10 +17,14 @@
   // ---- Fish image paths (all face RIGHT) — one of each, no duplicates ----
   var basePath = '/assets/images/fish/';
   var FISH_IMAGES = [
-    'goldfish.png',
-    'goldfish-red.png',
-    'tiger-barb.png',
-    'pink-snapper.png'
+    'goldfish.png',        // photorealistic golden goldfish
+    'goldfish-red.png',    // deep copper/red real goldfish
+    'tiger-barb.png',      // striped tropical with red fins
+    'pink-snapper.png',    // rose-colored reef fish
+    'trout.png',           // green/silver trout
+    'goldfish-fancy.png',  // 3D rendered fancy goldfish
+    'herring.png',         // silver herring
+    'goldfish-pair.png'    // pair of small orange goldfish
   ];
 
   // ---- Configuration ----
