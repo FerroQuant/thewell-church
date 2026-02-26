@@ -406,6 +406,9 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+  // Fade fish out at the bottom — eliminates hard clip line
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
 .fish {
