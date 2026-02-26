@@ -44,7 +44,7 @@
   // ---- Determine the blue zone boundary (hero or page-header) ----
   var blueZone = document.querySelector('.hero') || document.querySelector('.page-header');
   var tankHeight = blueZone
-    ? blueZone.getBoundingClientRect().bottom + 60 // include wave overlap
+    ? blueZone.getBoundingClientRect().bottom + 100 // extend past wave — CSS mask fades fish out
     : window.innerHeight * 0.5;
 
   // Apply height to fish-tank so fish stay in the blue area
